@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./player.css";
 import PlayerIcon from "../../assets/images/sleigh.png";
 
-function Player() {
+const Player = React.forwardRef<HTMLDivElement>((_, ref) => {
   const [jump, setJump] = useState(false);
 
   useEffect(() => {
@@ -31,10 +31,10 @@ function Player() {
     };
   }, []);
   return (
-    <div className={`player ${jump ? "jump" : ""}`}>
+    <div ref={ref} className={`player ${jump ? "jump" : ""}`}>
       <img src={PlayerIcon} />
     </div>
   );
-}
+});
 
 export default Player;

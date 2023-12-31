@@ -1,7 +1,10 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { RefObject, useEffect, useLayoutEffect, useState } from "react";
 import Tree from "../tree";
 
-function Enemies() {
+type Props = {
+  playerRef: RefObject<HTMLDivElement>;
+};
+function Enemies({ playerRef }: Props) {
   const [duration, setDuration] = useState<number>(7);
   const [index, setIndex] = useState<number>(0);
   const [list, setList] = useState<
@@ -50,6 +53,7 @@ function Enemies() {
           delay={item?.delay}
           index={item?.index}
           removeItem={removeItem}
+          playerRef={playerRef}
         />
       ))}
     </>

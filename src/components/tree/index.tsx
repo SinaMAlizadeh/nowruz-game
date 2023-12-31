@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import { TreeContainer, TreeImg } from "./tree.style";
 import TreeIcon from "../../assets/images/tree.png";
 
@@ -7,9 +7,17 @@ interface TreeProps {
   delay?: number;
   index: number;
   removeItem: (index: number) => void;
+  playerRef: RefObject<HTMLDivElement>;
 }
-function Tree({ animationDuration, delay, index, removeItem }: TreeProps) {
+function Tree({
+  animationDuration,
+  delay,
+  index,
+  removeItem,
+  playerRef,
+}: TreeProps) {
   const [show, setShow] = useState<boolean>(false);
+  const treeRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -28,12 +36,38 @@ function Tree({ animationDuration, delay, index, removeItem }: TreeProps) {
     return () => clearInterval(timer);
   }, [show]);
 
+  useEffect(() => {
+    const playerRect = playerRef?.current?.getBoundingClientRect();
+
+    const checkCollision = () => {
+      const playerPos = playerRect;
+      console.log(playerPos);
+      const treePos = treeRef?.current?.getBoundingClientRect();
+      console.log(treePos);
+      const collisions =
+        playerPos?.x < treePos?.x + treePos?.width &&
+        playerPos?.x + playerPos?.width > treePos?.x &&
+        playerPos?.y < treePos?.y + treePos?.height &&
+        playerPos?.y + playerPos?.height > treePos?.y;
+    };
+
+    const interval = setInterval(() => {
+      checkCollision();
+    }, 100); // Adjust the interval as needed
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       {show ? (
-        <TreeContainer>
+        <TreeContainer ref={treeRef}>
           {animationDuration} - {index}
-          <TreeImg animationDuration={animationDuration} src={TreeIcon} />
+          <TreeImg
+            ref={treeRef}
+            animationDuration={animationDuration}
+            src={TreeIcon}
+          />
         </TreeContainer>
       ) : (
         ""

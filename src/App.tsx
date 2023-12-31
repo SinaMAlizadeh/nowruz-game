@@ -1,8 +1,15 @@
+import { useEffect, useRef } from "react";
 import "./App.css";
 import Enemies from "./components/enemies";
 import Player from "./components/player";
 
 function App() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    console.log(ref.current);
+  }, [ref.current]);
+
   return (
     <>
       <div
@@ -25,8 +32,8 @@ function App() {
             overflow: "hidden",
           }}
         >
-          <Enemies />
-          <Player />
+          <Enemies playerRef={ref} />
+          <Player ref={ref} />
         </div>
       </div>
     </>
