@@ -20,8 +20,6 @@ function Enemies() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      console.log(duration);
-      console.log(index);
       //console.log([...list, objects[0]]);
       const delay = Math.floor(0 + Math.random() * (2 - 0 + 0));
       // setList((prev) => [...prev, objects[0]]);
@@ -41,7 +39,6 @@ function Enemies() {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-  return size;
 
   return (
     <>

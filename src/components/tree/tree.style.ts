@@ -26,4 +26,8 @@ export const TreeImg = styled.img<TreeImgProps>`
   animation: ${slideInOut} ${(p) => p.animationDuration}s linear infinite;
   position: absolute;
   bottom: 0;
+
+  @media (max-width: 600px) {
+    width: 16%;
+  }
 `;
