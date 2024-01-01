@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import "./App.css";
 import Enemies from "./components/enemies";
 import Player from "./components/player";
+import Clouds from "./components/clouds";
 
 function App() {
   const ref = useRef<HTMLDivElement>(null);
@@ -32,6 +33,7 @@ function App() {
             overflow: "hidden",
           }}
         >
+          <Clouds />
           <Enemies playerRef={ref} />
           <Player ref={ref} />
         </div>

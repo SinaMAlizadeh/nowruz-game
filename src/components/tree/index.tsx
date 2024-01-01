@@ -37,18 +37,21 @@ function Tree({
   }, [show]);
 
   useEffect(() => {
-    const playerRect = playerRef?.current?.getBoundingClientRect();
+    // const playerRect = playerRef?.current?.getBoundingClientRect();
 
     const checkCollision = () => {
-      const playerPos = playerRect;
-      console.log(playerPos);
+      const playerPos = playerRef?.current?.getBoundingClientRect();
       const treePos = treeRef?.current?.getBoundingClientRect();
-      console.log(treePos);
-      const collisions =
-        playerPos?.x < treePos?.x + treePos?.width &&
-        playerPos?.x + playerPos?.width > treePos?.x &&
-        playerPos?.y < treePos?.y + treePos?.height &&
-        playerPos?.y + playerPos?.height > treePos?.y;
+      if (
+        playerPos &&
+        treePos &&
+        playerPos.x < treePos.x + treePos.width &&
+        playerPos.x + playerPos.width > treePos.x &&
+        playerPos.y < treePos.y + treePos.height &&
+        playerPos.y + playerPos.height > treePos.y
+      ) {
+        console.log("closion");
+      }
     };
 
     const interval = setInterval(() => {
@@ -61,8 +64,7 @@ function Tree({
   return (
     <>
       {show ? (
-        <TreeContainer ref={treeRef}>
-          {animationDuration} - {index}
+        <TreeContainer>
           <TreeImg
             ref={treeRef}
             animationDuration={animationDuration}
