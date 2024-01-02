@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
 import "./App.css";
-import Enemies from "./components/enemies";
-import Player from "./components/player";
 import Clouds from "./components/clouds";
+import Enemies from "./components/enemies";
+import Land from "./components/land";
+import Player from "./components/player";
 
 function App() {
   const ref = useRef<HTMLDivElement>(null);
@@ -17,7 +18,6 @@ function App() {
         style={{
           height: "100svh",
           width: "100% ",
-
           position: "relative",
           display: "flex",
           justifyContent: "center",
@@ -27,7 +27,6 @@ function App() {
         <div
           style={{
             height: "300px",
-            background: "green",
             width: "100%",
             position: "relative",
             overflow: "hidden",
@@ -36,6 +35,7 @@ function App() {
           <Clouds />
           <Enemies playerRef={ref} />
           <Player ref={ref} />
+          <Land />
         </div>
       </div>
     </>
