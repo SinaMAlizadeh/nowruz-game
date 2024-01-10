@@ -2,10 +2,10 @@ import styled, { keyframes } from "styled-components";
 
 export const slideInOut = keyframes`
   0% {
-    transform: translateX(0%);
+    background-position: right;
   }
   100% {
-    transform: translateX(-100%);
+    background-position: left;
   }
 `;
 
@@ -15,9 +15,15 @@ interface LandImgProps {
   delay?: number;
 }
 export const LandImg = styled.div<LandImgProps>`
-  width: 100%;
-  height: 100%;
-  background-image: url(${(p) => p.src});
-  background-size: auto 100%;
   animation: ${slideInOut} ${(p) => p.animationDuration}s linear infinite;
+  background-image: url(${(p) => p.src});
+  position: absolute;
+  background-size: auto 30px;
+  background-repeat: repeat-x;
+  left: 0;
+  height: 30px;
+  bottom: 0;
+  right: -1920px;
+  height: 30px;
+  z-index: -1;
 `;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./player.css";
-import PlayerIcon from "../../assets/images/sleigh.png";
+import PlayerIcon from "../../assets/images/amoo.png";
 
 const Player = React.forwardRef<HTMLDivElement>((_, ref) => {
   const [jump, setJump] = useState(false);

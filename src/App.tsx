@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Clouds from "./components/clouds";
 import Enemies from "./components/enemies";
@@ -7,6 +7,14 @@ import Player from "./components/player";
 
 function App() {
   const ref = useRef<HTMLDivElement>(null);
+
+  const [duration, setDuration] = useState<number>(7);
+
+  useEffect(() => {
+    setInterval(() => {
+      setDuration((prev) => prev - 0.5);
+    }, 30000);
+  }, []);
 
   useEffect(() => {
     console.log(ref.current);
@@ -33,9 +41,9 @@ function App() {
           }}
         >
           <Clouds />
-          <Enemies playerRef={ref} />
+          <Enemies duration={duration} playerRef={ref} />
           <Player ref={ref} />
-          <Land />
+          <Land duration={duration} />
         </div>
       </div>
     </>

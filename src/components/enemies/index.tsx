@@ -3,9 +3,9 @@ import Tree from "../tree";
 
 type Props = {
   playerRef: RefObject<HTMLDivElement>;
+  duration: number;
 };
-function Enemies({ playerRef }: Props) {
-  const [duration, setDuration] = useState<number>(7);
+function Enemies({ playerRef, duration }: Props) {
   const [index, setIndex] = useState<number>(0);
   const [list, setList] = useState<
     { index: number; delay: number; duration: number }[]
@@ -14,12 +14,6 @@ function Enemies({ playerRef }: Props) {
   const removeItem = (index: number) => {
     setList((prev) => prev.filter((x) => x.index !== index));
   };
-
-  useEffect(() => {
-    setInterval(() => {
-      setDuration((prev) => prev - 0.5);
-    }, 30000);
-  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {

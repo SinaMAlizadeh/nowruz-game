@@ -1,8 +1,12 @@
 import LandImgLogo from "../../assets/images/land.png";
 import { LandImg } from "./land.style";
 
-function Land() {
-  return <LandImg src={LandImgLogo} animationDuration={7} />;
+type Props = {
+  duration: number;
+};
+
+function Land({ duration }: Props) {
+  return <LandImg src={LandImgLogo} animationDuration={duration} />;
 }
 
 export default Land;
