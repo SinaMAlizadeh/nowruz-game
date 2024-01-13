@@ -1,29 +1,31 @@
 import styled, { keyframes } from "styled-components";
 
-export const slideInOut = keyframes`
+export const slideInOut = (y: number) => keyframes`
  from {
-    transform: translateX(1920px); /* Start off-screen right */
+    transform: translateX(${y}px); /* Start off-screen right */
   }
  to {
-    transform: translateX(-1920px); /* Slide in completely */
+    transform: translateX(-${y}px); /* Slide in completely */
   }
 `;
 
 export const TreeContainer = styled.div`
   width: 100%;
-  height: 11%;
+  height: 6%;
   position: absolute;
-  bottom: 0;
+  bottom: 30px;
 `;
 
 interface TreeImgProps {
   animationDuration: number;
   delay?: number;
+  width: number;
 }
 
 export const TreeImg = styled.img<TreeImgProps>`
-  width: 9%;
-  animation: ${slideInOut} ${(p) => p.animationDuration}s linear infinite;
+  width: 5%;
+  animation: ${(props) => slideInOut(props.width)}
+    ${(p) => p.animationDuration}s linear infinite;
   position: absolute;
   bottom: 0;
 

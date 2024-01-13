@@ -8,6 +8,7 @@ interface TreeProps {
   index: number;
   removeItem: (index: number) => void;
   playerRef: RefObject<HTMLDivElement>;
+  width: number;
 }
 function Tree({
   animationDuration,
@@ -15,6 +16,7 @@ function Tree({
   index,
   removeItem,
   playerRef,
+  width,
 }: TreeProps) {
   const [show, setShow] = useState<boolean>(false);
   const treeRef = useRef<HTMLImageElement>(null);
@@ -51,6 +53,7 @@ function Tree({
         playerPos.y + playerPos.height > treePos.y
       ) {
         console.log("closion");
+        // alert("you lose");
       }
     };
 
@@ -66,6 +69,7 @@ function Tree({
       {show ? (
         <TreeContainer>
           <TreeImg
+            width={width}
             ref={treeRef}
             animationDuration={animationDuration}
             src={TreeIcon}

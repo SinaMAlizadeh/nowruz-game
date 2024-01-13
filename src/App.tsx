@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./App.css";
 import Clouds from "./components/clouds";
 import Enemies from "./components/enemies";
@@ -19,6 +19,16 @@ function App() {
   useEffect(() => {
     console.log(ref.current);
   }, [ref.current]);
+
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
 
   return (
     <>
@@ -41,9 +51,9 @@ function App() {
           }}
         >
           <Clouds />
-          <Enemies duration={duration} playerRef={ref} />
+          <Enemies duration={duration} playerRef={ref} width={size[0]} />
           <Player ref={ref} />
-          <Land duration={duration} />
+          <Land width={size[0]} duration={duration} />
         </div>
       </div>
     </>

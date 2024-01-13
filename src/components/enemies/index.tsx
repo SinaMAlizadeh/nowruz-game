@@ -1,11 +1,13 @@
-import { RefObject, useEffect, useLayoutEffect, useState } from "react";
+import { RefObject, useEffect, useState } from "react";
 import Tree from "../tree";
 
 type Props = {
   playerRef: RefObject<HTMLDivElement>;
   duration: number;
+  width: number;
 };
-function Enemies({ playerRef, duration }: Props) {
+
+function Enemies({ playerRef, duration, width }: Props) {
   const [index, setIndex] = useState<number>(0);
   const [list, setList] = useState<
     { index: number; delay: number; duration: number }[]
@@ -17,31 +19,19 @@ function Enemies({ playerRef, duration }: Props) {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      //console.log([...list, objects[0]]);
       const delay = Math.floor(0 + Math.random() * (2 - 0 + 0));
-      // setList((prev) => [...prev, objects[0]]);
       setList((prev) => [...prev, { delay, index, duration }]);
-      console.log(list);
       setIndex((prev) => prev + 1);
     }, 2000);
     return () => clearInterval(timer);
   }, [duration, index, list]);
-
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
 
   return (
     <>
       {duration}
       {list?.map((item) => (
         <Tree
+          width={width}
           key={item?.index}
           animationDuration={item?.duration}
           delay={item?.delay}

@@ -13,7 +13,9 @@ interface LandImgProps {
   animationDuration: number;
   src: string;
   delay?: number;
+  width: number;
 }
+
 export const LandImg = styled.div<LandImgProps>`
   animation: ${slideInOut} ${(p) => p.animationDuration}s linear infinite;
   background-image: url(${(p) => p.src});
@@ -23,7 +25,7 @@ export const LandImg = styled.div<LandImgProps>`
   left: 0;
   height: 30px;
   bottom: 0;
-  right: -1920px;
+  right: -${(p) => p.width}px;
   height: 30px;
   z-index: -1;
 `;
