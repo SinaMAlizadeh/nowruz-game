@@ -1,8 +1,27 @@
 .player {
   position: absolute;
-  bottom: 25px;
+  bottom: 35px;
   left: 10px;
-  width: 4%;
+  width: 60px;
+  height: 60px;
+  background-image: url("../../assets/images/amoo.png");
+  background-size: 60px 60px;
+  background-repeat: no-repeat;
+
+  animation-name: Running;
+  animation-fill-mode: linear;
+  animation-iteration-count: infinite;
+  animation-delay: 0s;
+  animation-duration: 0.3s;
+}
+
+@keyframes Running {
+  0% {
+    background-image: url("../../assets/images/amoo.png");
+  }
+  100% {
+    background-image: url("../../assets/images/amoo1.png");
+  }
 }
 
 @media only screen and (max-width: 600px) {

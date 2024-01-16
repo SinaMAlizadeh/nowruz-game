@@ -8,11 +8,11 @@ import Player from "./components/player";
 function App() {
   const ref = useRef<HTMLDivElement>(null);
 
-  const [duration, setDuration] = useState<number>(7);
+  const [duration, setDuration] = useState<number>(2);
 
   useEffect(() => {
     setInterval(() => {
-      setDuration((prev) => prev - 0.5);
+      setDuration((prev) => (prev - 0.5 > 0 ? 1 : 0));
     }, 30000);
   }, []);
 

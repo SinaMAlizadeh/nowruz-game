@@ -22,7 +22,7 @@ function Enemies({ playerRef, duration, width }: Props) {
       const delay = Math.floor(0 + Math.random() * (2 - 0 + 0));
       setList((prev) => [...prev, { delay, index, duration }]);
       setIndex((prev) => prev + 1);
-    }, 2000);
+    }, 1000);
     return () => clearInterval(timer);
   }, [duration, index, list]);
 

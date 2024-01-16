@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./player.css";
-import PlayerIcon from "../../assets/images/amoo.png";
 
 const Player = React.forwardRef<HTMLDivElement>((_, ref) => {
   const [jump, setJump] = useState(false);
@@ -30,11 +29,7 @@ const Player = React.forwardRef<HTMLDivElement>((_, ref) => {
       document.removeEventListener("click", handleClick);
     };
   }, []);
-  return (
-    <div ref={ref} className={`player ${jump ? "jump" : ""}`}>
-      <img src={PlayerIcon} />
-    </div>
-  );
+  return <div ref={ref} className={`player ${jump ? "jump" : ""}`}></div>;
 });
 
 export default Player;
