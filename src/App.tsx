@@ -44,10 +44,13 @@ function App() {
       >
         <div
           style={{
-            height: "300px",
+            height: "400px",
             width: "100%",
             position: "relative",
             overflow: "hidden",
+            backgroundColor: "#91dcff",
+            margin: "0 70px",
+            maxWidth: "1920px",
           }}
         >
           <Clouds />

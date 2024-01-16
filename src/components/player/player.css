@@ -1,6 +1,6 @@
 .player {
   position: absolute;
-  bottom: 20px;
+  bottom: 25px;
   left: 10px;
   width: 4%;
 }
@@ -8,7 +8,7 @@
 @media only screen and (max-width: 600px) {
   .player {
     position: absolute;
-    bottom: 20px;
+    bottom: 25px;
     left: 10px;
     width: 16%;
   }
@@ -27,7 +27,7 @@
 
 @keyframes MoveUp {
   0% {
-    bottom: 20px; /* Start and end at the top */
+    bottom: 25px; /* Start and end at the top */
   }
   100% {
     bottom: 200px;
@@ -48,6 +48,6 @@
     bottom: 200px; /* Start and end at the top */
   }
   100% {
-    bottom: 20px;
+    bottom: 25px;
   }
 }

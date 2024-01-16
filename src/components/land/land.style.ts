@@ -27,5 +27,4 @@ export const LandImg = styled.div<LandImgProps>`
   bottom: 0;
   right: -${(p) => p.width}px;
   height: 30px;
-  z-index: -1;
 `;
