@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useRef, useState } from "react";
 import { TreeContainer, TreeImg } from "./tree.style";
-import TreeIcon from "../../assets/images/tree.png";
+import TreeIcon from "../../assets/images/snowMan.png";
 
 interface TreeProps {
   animationDuration: number;

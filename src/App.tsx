@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     setInterval(() => {
-      setDuration((prev) => (prev - 0.5 > 0 ? 1 : 0));
+      setDuration((prev) => (prev - 0.5 > 0 ? prev - 0.5 : 0));
     }, 30000);
   }, []);
 
@@ -49,7 +49,7 @@ function App() {
             position: "relative",
             overflow: "hidden",
             backgroundColor: "#91dcff",
-            margin: "0 70px",
+
             maxWidth: "1920px",
           }}
         >

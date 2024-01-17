@@ -13,7 +13,7 @@ export const TreeContainer = styled.div`
   width: 100%;
   height: 6%;
   position: absolute;
-  bottom: 30px;
+  bottom: 25px;
 `;
 
 interface TreeImgProps {
@@ -23,7 +23,8 @@ interface TreeImgProps {
 }
 
 export const TreeImg = styled.img<TreeImgProps>`
-  width: 5%;
+  height: 70px;
+  width: auto;
   animation: ${(props) => slideInOut(props.width)}
     ${(p) => p.animationDuration}s linear infinite;
   position: absolute;
