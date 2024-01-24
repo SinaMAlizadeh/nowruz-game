@@ -4,7 +4,7 @@
   left: 10px;
   width: 60px;
   height: 60px;
-  background-image: url("../../assets/images/amou.png");
+  background-image: url("../../assets/images/amou-v1.png");
   background-size: 60px 60px;
   background-repeat: no-repeat;
 
@@ -17,13 +17,13 @@
 
 @keyframes Running {
   0% {
-    background-image: url("../../assets/images/amou.png");
+    background-image: url("../../assets/images/amou-v1.png");
   }
   50% {
-    background-image: url("../../assets/images/amou1.png");
+    background-image: url("../../assets/images/amou-v1-2.png");
   }
   100% {
-    background-image: url("../../assets/images/amou2.png");
+    background-image: url("../../assets/images/amou-v1-3.png");
   }
 }
 
