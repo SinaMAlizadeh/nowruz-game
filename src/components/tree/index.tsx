@@ -1,6 +1,7 @@
 import { RefObject, useEffect, useRef, useState } from "react";
 import { TreeContainer, TreeImg } from "./tree.style";
 import TreeIcon from "../../assets/images/snowMan.png";
+import { Live } from "../../models/live";
 
 interface TreeProps {
   animationDuration: number;
@@ -9,6 +10,7 @@ interface TreeProps {
   removeItem: (index: number) => void;
   playerRef: RefObject<HTMLDivElement>;
   width: number;
+  setLives: React.Dispatch<React.SetStateAction<Live[]>>;
 }
 function Tree({
   animationDuration,
@@ -17,6 +19,7 @@ function Tree({
   removeItem,
   playerRef,
   width,
+  setLives,
 }: TreeProps) {
   const [show, setShow] = useState<boolean>(false);
   const treeRef = useRef<HTMLImageElement>(null);
@@ -53,6 +56,7 @@ function Tree({
         playerPos.y + playerPos.height > treePos.y
       ) {
         console.log("closion");
+        setLives((prev) => prev.slice(1));
         // alert("you lose");
       }
     };

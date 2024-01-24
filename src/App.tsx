@@ -4,21 +4,31 @@ import Clouds from "./components/clouds";
 import Enemies from "./components/enemies";
 import Land from "./components/land";
 import Player from "./components/player";
+import Lives from "./components/lives";
+import { Live } from "./models/live";
+
+const useLives: Array<Live> = [
+  {
+    id: 1,
+  },
+  {
+    id: 2,
+  },
+  {
+    id: 3,
+  },
+];
 
 function App() {
   const ref = useRef<HTMLDivElement>(null);
-
   const [duration, setDuration] = useState<number>(4);
+  const [lives, setLives] = useState<Array<Live>>(useLives);
 
   useEffect(() => {
     setInterval(() => {
       setDuration((prev) => (prev - 0.5 > 0 ? prev - 0.5 : 0));
     }, 30000);
   }, []);
-
-  useEffect(() => {
-    console.log(ref.current);
-  }, [ref.current]);
 
   const [size, setSize] = useState([0, 0]);
   useLayoutEffect(() => {
@@ -29,6 +39,12 @@ function App() {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
+
+  useEffect(() => {
+    if (lives.length === 0) {
+      setDuration(0);
+    }
+  }, [lives]);
 
   return (
     <>
@@ -53,8 +69,14 @@ function App() {
             maxWidth: "1920px",
           }}
         >
+          <Lives lives={lives} />
           <Clouds />
-          <Enemies duration={duration} playerRef={ref} width={size[0]} />
+          <Enemies
+            duration={duration}
+            playerRef={ref}
+            width={size[0]}
+            setLives={setLives}
+          />
           <Player ref={ref} />
           <Land width={size[0]} duration={duration} />
         </div>
