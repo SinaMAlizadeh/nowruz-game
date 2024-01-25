@@ -41,6 +41,7 @@ function Tree({
     return () => clearInterval(timer);
   }, [show]);
 
+  let collisionHandled = false;
   useEffect(() => {
     // const playerRect = playerRef?.current?.getBoundingClientRect();
 
@@ -55,8 +56,14 @@ function Tree({
         playerPos.y < treePos.y + treePos.height &&
         playerPos.y + playerPos.height > treePos.y
       ) {
-        console.log("closion");
-        setLives((prev) => prev.slice(1));
+        if (collisionHandled) {
+          console.log("closion");
+          setLives((prev) => prev.slice(1));
+          collisionHandled = true;
+        } else {
+          collisionHandled = false;
+        }
+
         // alert("you lose");
       }
     };
