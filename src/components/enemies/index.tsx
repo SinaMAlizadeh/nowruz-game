@@ -1,15 +1,17 @@
-import { RefObject, useEffect, useState } from "react";
+import { RefObject, useContext, useEffect, useState } from "react";
 import Tree from "../tree";
-import { Live } from "../../models/live";
+
+import { GameContext } from "../../context/gameContext";
 
 type Props = {
   playerRef: RefObject<HTMLDivElement>;
-  duration: number;
   width: number;
-  setLives: React.Dispatch<React.SetStateAction<Live[]>>;
 };
 
-function Enemies({ playerRef, duration, width, setLives }: Props) {
+function Enemies({ playerRef, width }: Props) {
+  const {
+    state: { duration },
+  } = useContext(GameContext);
   const [index, setIndex] = useState<number>(0);
   const [list, setList] = useState<
     { index: number; delay: number; duration: number }[]
@@ -33,7 +35,6 @@ function Enemies({ playerRef, duration, width, setLives }: Props) {
       {duration}
       {list?.map((item) => (
         <Tree
-          setLives={setLives}
           width={width}
           key={item?.index}
           animationDuration={item?.duration}

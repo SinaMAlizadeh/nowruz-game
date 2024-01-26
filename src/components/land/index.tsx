@@ -1,14 +1,20 @@
+import { useContext } from "react";
 import LandImgLogo from "../../assets/images/land.png";
 import { LandImg } from "./land.style";
+import { GameContext } from "../../context/gameContext";
 
 type Props = {
-  duration: number;
   width: number;
 };
 
-function Land({ duration, width }: Props) {
+function Land({ width }: Props) {
+  const { state } = useContext(GameContext);
   return (
-    <LandImg width={width} src={LandImgLogo} animationDuration={duration} />
+    <LandImg
+      width={width}
+      src={LandImgLogo}
+      animationDuration={state?.duration}
+    />
   );
 }
 

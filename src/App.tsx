@@ -1,32 +1,31 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import "./App.css";
 import Clouds from "./components/clouds";
 import Enemies from "./components/enemies";
 import Land from "./components/land";
 import Player from "./components/player";
 import Lives from "./components/lives";
-import { Live } from "./models/live";
-
-const useLives: Array<Live> = [
-  {
-    id: 1,
-  },
-  {
-    id: 2,
-  },
-  {
-    id: 3,
-  },
-];
+import { GameContext } from "./context/gameContext";
+import { Types } from "./context/reducers";
 
 function App() {
   const ref = useRef<HTMLDivElement>(null);
-  const [duration, setDuration] = useState<number>(4);
-  const [lives, setLives] = useState<Array<Live>>(useLives);
+  const { dispatch, state } = useContext(GameContext);
 
   useEffect(() => {
     setInterval(() => {
-      setDuration((prev) => (prev - 0.5 > 0 ? prev - 0.5 : 0));
+      dispatch({
+        type: Types.SetDuration,
+        payload: {
+          duration: state?.duration - 0.5 > 0 ? state?.duration - 0.5 : 0,
+        },
+      });
     }, 30000);
   }, []);
 
@@ -39,12 +38,6 @@ function App() {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-
-  useEffect(() => {
-    if (lives.length === 0) {
-      setDuration(0);
-    }
-  }, [lives]);
 
   return (
     <>
@@ -65,20 +58,14 @@ function App() {
             position: "relative",
             overflow: "hidden",
             backgroundColor: "#91dcff",
-
             maxWidth: "1920px",
           }}
         >
-          <Lives lives={lives} />
+          <Lives />
           <Clouds />
-          <Enemies
-            duration={duration}
-            playerRef={ref}
-            width={size[0]}
-            setLives={setLives}
-          />
+          <Enemies playerRef={ref} width={size[0]} />
           <Player ref={ref} />
-          <Land width={size[0]} duration={duration} />
+          <Land width={size[0]} />
         </div>
       </div>
     </>

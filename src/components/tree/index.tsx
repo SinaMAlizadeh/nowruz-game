@@ -1,7 +1,8 @@
-import { RefObject, useEffect, useRef, useState } from "react";
-import { TreeContainer, TreeImg } from "./tree.style";
+import { RefObject, useContext, useEffect, useRef, useState } from "react";
 import TreeIcon from "../../assets/images/snowMan.png";
-import { Live } from "../../models/live";
+import { TreeContainer, TreeImg } from "./tree.style";
+import { GameContext } from "../../context/gameContext";
+import { Types } from "../../context/reducers";
 
 interface TreeProps {
   animationDuration: number;
@@ -10,7 +11,6 @@ interface TreeProps {
   removeItem: (index: number) => void;
   playerRef: RefObject<HTMLDivElement>;
   width: number;
-  setLives: React.Dispatch<React.SetStateAction<Live[]>>;
 }
 function Tree({
   animationDuration,
@@ -19,8 +19,8 @@ function Tree({
   removeItem,
   playerRef,
   width,
-  setLives,
 }: TreeProps) {
+  const { state, dispatch } = useContext(GameContext);
   const [show, setShow] = useState<boolean>(false);
   const treeRef = useRef<HTMLImageElement>(null);
 
@@ -41,7 +41,6 @@ function Tree({
     return () => clearInterval(timer);
   }, [show]);
 
-  let collisionHandled = false;
   useEffect(() => {
     // const playerRect = playerRef?.current?.getBoundingClientRect();
 
@@ -56,14 +55,28 @@ function Tree({
         playerPos.y < treePos.y + treePos.height &&
         playerPos.y + playerPos.height > treePos.y
       ) {
-        if (collisionHandled) {
-          console.log("closion");
-          setLives((prev) => prev.slice(1));
-          collisionHandled = true;
-        } else {
-          collisionHandled = false;
+        const removedLives = state?.lives.filter((x) => !x.show);
+        if (removedLives.some((x) => x.index === index)) {
+          return;
         }
-
+        let isSetTrue = false;
+        const lives = state?.lives.map((x) => {
+          if (!isSetTrue && x.show) {
+            isSetTrue = true;
+            return {
+              id: x.id,
+              show: false,
+              index: index,
+            };
+          }
+          return x;
+        });
+        dispatch({
+          type: Types.SetLives,
+          payload: {
+            lives: lives,
+          },
+        });
         // alert("you lose");
       }
     };
@@ -73,7 +86,7 @@ function Tree({
     }, 100); // Adjust the interval as needed
 
     return () => clearInterval(interval);
-  }, []);
+  }, [dispatch, index, playerRef, state?.lives]);
 
   return (
     <>
