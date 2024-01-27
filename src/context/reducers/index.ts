@@ -1,5 +1,6 @@
 import { Live } from "../../models/live";
 import { GameState } from "../gameContext";
+import playerHasLive from "./helper";
 
 type ActionMap<M extends { [index: string]: unknown }> = {
   [Key in keyof M]: M[Key] extends undefined
@@ -15,6 +16,8 @@ type ActionMap<M extends { [index: string]: unknown }> = {
 export enum Types {
   SetDuration = "SET_DURATION",
   SetLives = "SET_LIVES",
+  SetWidth = "SET_WIDTH",
+  SetPlay = "SET_PLAY",
 }
 
 type GamePayload = {
@@ -23,6 +26,12 @@ type GamePayload = {
   };
   [Types.SetLives]: {
     lives: Array<Live>;
+  };
+  [Types.SetWidth]: {
+    width: number;
+  };
+  [Types.SetPlay]: {
+    play: boolean;
   };
 };
 
@@ -36,13 +45,23 @@ export const gameReducer = (state: GameState, action: GameActions) => {
         duration: action?.payload?.duration,
       };
     case Types.SetLives:
-      console.log(action);
+      const hasLive = playerHasLive(action?.payload?.lives);
+
       return {
         ...state,
         lives: action?.payload?.lives,
-        duration: action?.payload?.lives.some((x) => x.show)
-          ? state?.duration
-          : 0,
+        duration: hasLive ? state?.duration : 0,
+        play: hasLive,
+      };
+    case Types.SetWidth:
+      return {
+        ...state,
+        width: action?.payload?.width,
+      };
+    case Types.SetPlay:
+      return {
+        ...state,
+        play: action?.payload?.play,
       };
 
     default:

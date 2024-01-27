@@ -10,7 +10,6 @@ interface TreeProps {
   index: number;
   removeItem: (index: number) => void;
   playerRef: RefObject<HTMLDivElement>;
-  width: number;
 }
 function Tree({
   animationDuration,
@@ -18,7 +17,6 @@ function Tree({
   index,
   removeItem,
   playerRef,
-  width,
 }: TreeProps) {
   const { state, dispatch } = useContext(GameContext);
   const [show, setShow] = useState<boolean>(false);
@@ -93,7 +91,8 @@ function Tree({
       {show ? (
         <TreeContainer>
           <TreeImg
-            width={width}
+            play={state?.play}
+            width={state?.width}
             ref={treeRef}
             animationDuration={animationDuration}
             src={TreeIcon}

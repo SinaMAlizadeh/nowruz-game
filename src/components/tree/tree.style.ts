@@ -20,6 +20,7 @@ interface TreeImgProps {
   animationDuration: number;
   delay?: number;
   width: number;
+  play: boolean;
 }
 
 export const TreeImg = styled.img<TreeImgProps>`
@@ -29,7 +30,7 @@ export const TreeImg = styled.img<TreeImgProps>`
     ${(p) => p.animationDuration}s linear infinite;
   position: absolute;
   bottom: 0;
-
+  animation-play-state: ${(props) => (props?.play ? "running" : "paused")};
   @media (max-width: 600px) {
     width: 16%;
   }

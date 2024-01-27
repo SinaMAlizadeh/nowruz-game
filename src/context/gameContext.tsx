@@ -22,6 +22,7 @@ export type GameState = {
   duration: number;
   width: number;
   hight: number;
+  play: boolean;
 };
 
 const initialState: GameState = {
@@ -29,6 +30,7 @@ const initialState: GameState = {
   hight: 0,
   lives: useLives,
   width: 0,
+  play: false,
 };
 
 const GameContext = createContext<{
@@ -41,7 +43,6 @@ const GameContext = createContext<{
 
 const GameProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(gameReducer, initialState);
-
   return (
     <GameContext.Provider value={{ state, dispatch }}>
       {children}

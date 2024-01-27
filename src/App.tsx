@@ -1,10 +1,4 @@
-import {
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { useContext, useEffect, useLayoutEffect, useRef } from "react";
 import "./App.css";
 import Clouds from "./components/clouds";
 import Enemies from "./components/enemies";
@@ -27,12 +21,23 @@ function App() {
         },
       });
     }, 30000);
+
+    dispatch({
+      type: Types.SetPlay,
+      payload: {
+        play: true,
+      },
+    });
   }, []);
 
-  const [size, setSize] = useState([0, 0]);
   useLayoutEffect(() => {
     function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
+      dispatch({
+        type: Types?.SetWidth,
+        payload: {
+          width: window.innerWidth,
+        },
+      });
     }
     window.addEventListener("resize", updateSize);
     updateSize();
@@ -63,9 +68,9 @@ function App() {
         >
           <Lives />
           <Clouds />
-          <Enemies playerRef={ref} width={size[0]} />
+          <Enemies playerRef={ref} />
           <Player ref={ref} />
-          <Land width={size[0]} />
+          <Land />
         </div>
       </div>
     </>

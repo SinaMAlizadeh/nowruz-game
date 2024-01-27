@@ -5,12 +5,11 @@ import { GameContext } from "../../context/gameContext";
 
 type Props = {
   playerRef: RefObject<HTMLDivElement>;
-  width: number;
 };
 
-function Enemies({ playerRef, width }: Props) {
+function Enemies({ playerRef }: Props) {
   const {
-    state: { duration },
+    state: { duration, play },
   } = useContext(GameContext);
   const [index, setIndex] = useState<number>(0);
   const [list, setList] = useState<
@@ -32,10 +31,8 @@ function Enemies({ playerRef, width }: Props) {
 
   return (
     <>
-      {duration}
       {list?.map((item) => (
         <Tree
-          width={width}
           key={item?.index}
           animationDuration={item?.duration}
           delay={item?.delay}
