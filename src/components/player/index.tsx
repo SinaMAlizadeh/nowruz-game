@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./player.css";
+import PlayerCharacter from "./player.style";
 
 const Player = React.forwardRef<HTMLDivElement>((_, ref) => {
   const [jump, setJump] = useState(false);
@@ -14,22 +14,23 @@ const Player = React.forwardRef<HTMLDivElement>((_, ref) => {
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.keyCode === 32) {
+      if (e.keyCode === 32 || e.keyCode === 38) {
         setJump(true);
       }
     }
     function handleClick() {
       setJump(true);
     }
+
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("click", handleClick);
-    // Don't forget to clean up
-    return function cleanup() {
+    return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("click", handleClick);
     };
   }, []);
-  return <div ref={ref} className={`player ${jump ? "jump" : ""}`}></div>;
+
+  return <PlayerCharacter ref={ref} $isJumping={jump} />;
 });
 
 export default Player;

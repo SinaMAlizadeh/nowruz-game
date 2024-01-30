@@ -10,14 +10,14 @@ export const slideInOut = keyframes`
 `;
 
 interface LandImgProps {
-  animationDuration: number;
+  $animationDuration: number;
   src: string;
   delay?: number;
   width: number;
 }
 
 export const LandImg = styled.div<LandImgProps>`
-  animation: ${slideInOut} ${(p) => p.animationDuration}s linear infinite;
+  animation: ${slideInOut} ${(p) => p.$animationDuration}s linear infinite;
   background-image: url(${(p) => p.src});
   position: absolute;
   background-size: auto 30px;

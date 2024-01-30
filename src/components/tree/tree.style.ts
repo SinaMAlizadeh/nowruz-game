@@ -17,20 +17,20 @@ export const TreeContainer = styled.div`
 `;
 
 interface TreeImgProps {
-  animationDuration: number;
+  $animationDuration: number;
   delay?: number;
   width: number;
-  play: boolean;
+  $play: boolean;
 }
 
 export const TreeImg = styled.img<TreeImgProps>`
   height: 70px;
   width: auto;
   animation: ${(props) => slideInOut(props.width)}
-    ${(p) => p.animationDuration}s linear infinite;
+    ${(p) => p.$animationDuration}s linear infinite;
   position: absolute;
   bottom: 0;
-  animation-play-state: ${(props) => (props?.play ? "running" : "paused")};
+  animation-play-state: ${(props) => (props?.$play ? "running" : "paused")};
   @media (max-width: 600px) {
     width: 16%;
   }

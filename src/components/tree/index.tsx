@@ -91,10 +91,10 @@ function Tree({
       {show ? (
         <TreeContainer>
           <TreeImg
-            play={state?.play}
+            $play={state?.play}
             width={state?.width}
             ref={treeRef}
-            animationDuration={animationDuration}
+            $animationDuration={animationDuration}
             src={TreeIcon}
           />
         </TreeContainer>

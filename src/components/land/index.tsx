@@ -9,7 +9,7 @@ function Land() {
     <LandImg
       width={state?.width}
       src={LandImgLogo}
-      animationDuration={state?.duration}
+      $animationDuration={state?.duration}
     />
   );
 }

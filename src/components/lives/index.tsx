@@ -1,22 +1,20 @@
 import { useContext } from "react";
 import LiveLogo from "../../assets/images/sabze.png";
 import { GameContext } from "../../context/gameContext";
+import { LivesContent } from "./lives.style";
 
 function Lives() {
-  const { state } = useContext(GameContext);
+  const {
+    state: { lives },
+  } = useContext(GameContext);
   return (
-    <div style={{ position: "absolute", right: "20px", top: "20px" }}>
-      {state?.lives
+    <LivesContent>
+      {lives
         ?.filter((x) => x.show)
         .map((item) => (
-          <img
-            src={LiveLogo}
-            key={item.id}
-            width="23"
-            style={{ marginLeft: "10px" }}
-          />
+          <img src={LiveLogo} key={item.id} width="23" />
         ))}
-    </div>
+    </LivesContent>
   );
 }
 

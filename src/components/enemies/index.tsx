@@ -3,6 +3,12 @@ import Tree from "../tree";
 
 import { GameContext } from "../../context/gameContext";
 
+type Enemy = {
+  index: number;
+  delay: number;
+  duration: number;
+};
+
 type Props = {
   playerRef: RefObject<HTMLDivElement>;
 };
@@ -12,9 +18,7 @@ function Enemies({ playerRef }: Props) {
     state: { duration, play },
   } = useContext(GameContext);
   const [index, setIndex] = useState<number>(0);
-  const [list, setList] = useState<
-    { index: number; delay: number; duration: number }[]
-  >([]);
+  const [list, setList] = useState<Enemy[]>([]);
 
   const removeItem = (index: number) => {
     setList((prev) => prev.filter((x) => x.index !== index));
