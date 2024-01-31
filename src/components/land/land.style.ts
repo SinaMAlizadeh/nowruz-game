@@ -14,6 +14,7 @@ interface LandImgProps {
   src: string;
   delay?: number;
   width: number;
+  $isPlay: boolean;
 }
 
 export const LandImg = styled.div<LandImgProps>`
@@ -22,6 +23,7 @@ export const LandImg = styled.div<LandImgProps>`
   position: absolute;
   background-size: auto 30px;
   background-repeat: repeat-x;
+  animation-play-state: ${(props) => (props?.$isPlay ? "running" : "paused")};
   left: 0;
   height: 30px;
   bottom: 0;

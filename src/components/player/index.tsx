@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PlayerCharacter from "./player.style";
+import { GameContext } from "../../context/gameContext";
 
 const Player = React.forwardRef<HTMLDivElement>((_, ref) => {
   const [jump, setJump] = useState(false);
+  const {
+    state: { play },
+  } = useContext(GameContext);
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>;
@@ -30,7 +34,7 @@ const Player = React.forwardRef<HTMLDivElement>((_, ref) => {
     };
   }, []);
 
-  return <PlayerCharacter ref={ref} $isJumping={jump} />;
+  return <PlayerCharacter ref={ref} $isJumping={jump} $isPlay={play} />;
 });
 
 export default Player;

@@ -42,6 +42,7 @@ const MoveDown = keyframes`
 
 type Props = {
   $isJumping: boolean;
+  $isPlay: boolean;
 };
 
 // Define the Player styled component
@@ -55,6 +56,7 @@ const PlayerCharacter = styled.div<Props>`
   background-size: 60px 60px;
   background-repeat: no-repeat;
   animation: ${Running} 0.3s linear infinite;
+  animation-play-state: ${(props) => (props?.$isPlay ? "running" : "paused")};
   ${({ $isJumping }) =>
     $isJumping &&
     css`
@@ -63,7 +65,7 @@ const PlayerCharacter = styled.div<Props>`
     `}
 
   @media only screen and (max-width: 600px) {
-    bottom: 25px;
+    bottom: 35px;
     left: 10px;
     width: 16%;
   }

@@ -7,6 +7,7 @@ import Player from "./components/player";
 import Lives from "./components/lives";
 import { GameContext } from "./context/gameContext";
 import { Types } from "./context/reducers";
+import useDetectTabFocus from "./hooks/useCheckTabFocus";
 
 function App() {
   const ref = useRef<HTMLDivElement>(null);
@@ -43,6 +44,8 @@ function App() {
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
+
+  useDetectTabFocus();
 
   return (
     <>

@@ -10,6 +10,7 @@ function Land() {
       width={state?.width}
       src={LandImgLogo}
       $animationDuration={state?.duration}
+      $isPlay={state?.play}
     />
   );
 }

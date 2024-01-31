@@ -31,13 +31,17 @@ function Tree({
 
   useEffect(() => {
     let timer: number;
-    if (show)
-      timer = setTimeout(() => {
-        setShow(false);
-        removeItem(index);
-      }, animationDuration * 1000);
+    if (show) {
+      if (state?.play) {
+        timer = setTimeout(() => {
+          setShow(false);
+          removeItem(index);
+        }, animationDuration * 1000);
+      }
+    }
+
     return () => clearInterval(timer);
-  }, [show]);
+  }, [show, state?.play]);
 
   useEffect(() => {
     // const playerRect = playerRef?.current?.getBoundingClientRect();

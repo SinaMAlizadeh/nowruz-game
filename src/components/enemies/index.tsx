@@ -26,12 +26,14 @@ function Enemies({ playerRef }: Props) {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const delay = Math.floor(0 + Math.random() * (2 - 0 + 0));
-      setList((prev) => [...prev, { delay, index, duration }]);
-      setIndex((prev) => prev + 1);
+      if (play) {
+        const delay = Math.floor(0 + Math.random() * (2 - 0 + 0));
+        setList((prev) => [...prev, { delay, index, duration }]);
+        setIndex((prev) => prev + 1);
+      }
     }, 1000);
     return () => clearInterval(timer);
-  }, [duration, index, list]);
+  }, [duration, index, list, play]);
 
   return (
     <>
