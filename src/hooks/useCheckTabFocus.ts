@@ -12,18 +12,18 @@ const useDetectTabFocus = () => {
       });
     };
 
-    const handleActivityTrue = () => {
-      dispatch({
-        type: Types.SetPlay,
-        payload: { play: true },
-      });
-    };
+    // const handleActivityTrue = () => {
+    //   dispatch({
+    //     type: Types.SetPlay,
+    //     payload: { play: true },
+    //   });
+    // };
 
-    window.addEventListener("focus", handleActivityTrue);
+    // window.addEventListener("focus", handleActivityTrue);
     window.addEventListener("blur", handleActivityFalse);
 
     return () => {
-      window.removeEventListener("focus", handleActivityTrue);
+      // window.removeEventListener("focus", handleActivityTrue);
       window.removeEventListener("blur", handleActivityFalse);
     };
   }, []);

@@ -3,8 +3,9 @@ import "./App.css";
 import Clouds from "./components/clouds";
 import Enemies from "./components/enemies";
 import Land from "./components/land";
-import Player from "./components/player";
 import Lives from "./components/lives";
+import Player from "./components/player";
+import Setting from "./components/setting";
 import { GameContext } from "./context/gameContext";
 import { Types } from "./context/reducers";
 import useDetectTabFocus from "./hooks/useCheckTabFocus";
@@ -69,6 +70,7 @@ function App() {
             maxWidth: "1920px",
           }}
         >
+          <Setting />
           <Lives />
           <Clouds />
           <Enemies playerRef={ref} />
