@@ -11,9 +11,9 @@ export const slideInOut = (y: number) => keyframes`
 
 export const TreeContainer = styled.div`
   width: 100%;
-  height: 6%;
+  height: 120px;
   position: absolute;
-  bottom: 25px;
+  bottom: 90px;
 `;
 
 interface TreeImgProps {
@@ -24,14 +24,11 @@ interface TreeImgProps {
 }
 
 export const TreeImg = styled.img<TreeImgProps>`
-  height: 70px;
+  height: 120px;
   width: auto;
   animation: ${(props) => slideInOut(props.width)}
     ${(p) => p.$animationDuration}s linear infinite;
   position: absolute;
   bottom: 0;
   animation-play-state: ${(props) => (props?.$play ? "running" : "paused")};
-  @media (max-width: 600px) {
-    width: 16%;
-  }
 `;

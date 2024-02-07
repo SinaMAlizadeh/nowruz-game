@@ -26,7 +26,7 @@ export type GameState = {
 };
 
 const initialState: GameState = {
-  duration: 4,
+  duration: 5,
   hight: 0,
   lives: useLives,
   width: 0,

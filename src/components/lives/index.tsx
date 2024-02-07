@@ -12,7 +12,7 @@ function Lives() {
       {lives
         ?.filter((x) => x.show)
         .map((item) => (
-          <img src={LiveLogo} key={item.id} width="23" />
+          <img src={LiveLogo} key={item.id} width="30" />
         ))}
     </LivesContent>
   );

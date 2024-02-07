@@ -25,7 +25,6 @@ const Player = React.forwardRef<HTMLDivElement>((_, ref) => {
     function handleClick() {
       setJump(true);
     }
-
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("click", handleClick);
     return () => {

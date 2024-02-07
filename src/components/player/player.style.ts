@@ -18,25 +18,25 @@ const Running = keyframes`
 
 const MoveUp = keyframes`
   0% {
-    bottom: 35px;
+    bottom: 100px;
   }
   100% {
-    bottom: 200px;
+    bottom: 350px;
   }
 `;
 
 const StayTop = keyframes`
   0%, 100% {
-    bottom: 200px;
+    bottom: 350px;
   }
 `;
 
 const MoveDown = keyframes`
   0% {
-    bottom: 200px;
+    bottom: 350px;
   }
   100% {
-    bottom: 35px;
+    bottom: 100px;
   }
 `;
 
@@ -48,12 +48,12 @@ type Props = {
 // Define the Player styled component
 const PlayerCharacter = styled.div<Props>`
   position: absolute;
-  bottom: 35px;
+  bottom: 100px;
   left: 10px;
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   background-image: url(${Amou1});
-  background-size: 60px 60px;
+  background-size: 100px 100px;
   background-repeat: no-repeat;
   animation: ${Running} 0.3s linear infinite;
   animation-play-state: ${(props) => (props?.$isPlay ? "running" : "paused")};
@@ -65,7 +65,7 @@ const PlayerCharacter = styled.div<Props>`
     `}
 
   @media only screen and (max-width: 600px) {
-    bottom: 35px;
+    bottom: 100px;
     left: 10px;
     width: 16%;
   }

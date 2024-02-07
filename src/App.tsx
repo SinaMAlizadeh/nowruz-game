@@ -61,7 +61,7 @@ function App() {
       >
         <div
           style={{
-            height: "400px",
+            height: "100vh",
             width: "100%",
             position: "relative",
             overflow: "hidden",

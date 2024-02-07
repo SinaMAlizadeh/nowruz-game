@@ -13,12 +13,12 @@ export const upDown = keyframes`
 `;
 
 export const Cloud = styled.img`
-  height: 20%;
-  right: 12%;
+  height: 16%;
+  right: 20%;
   animation: ${upDown} 3s ease-in-out infinite;
   position: absolute;
-  top: 5%;
+  top: 10%;
   @media (max-width: 600px) {
-    width: 16%;
+    height: 16%;
   }
 `;
