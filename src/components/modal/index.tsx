@@ -14,7 +14,6 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   return ReactDOM.createPortal(
     <ModalOverlay>
       <ModalContent onClick={(e) => e.stopPropagation()} $src={ModalBox}>
-        <button onClick={onClose}>close</button>
         {children}
       </ModalContent>
     </ModalOverlay>,

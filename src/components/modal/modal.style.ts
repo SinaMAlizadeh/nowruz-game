@@ -19,11 +19,11 @@ type Props = {
 
 export const ModalContent = styled.div<Props>`
   background-image: url(${(p) => p.$src});
-  background-size: auto 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
-  width: 100%;
-  height: 90vh;
+  width: 600px;
+  height: 600px;
   padding: 20px;
   border-radius: 5px;
   z-index: 1051;

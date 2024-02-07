@@ -1,15 +1,36 @@
-import { useState } from "react";
+import { useContext } from "react";
 import Modal from "../modal";
+import { GameContext } from "../../context/gameContext";
+import { Types } from "../../context/reducers";
+import IconPlay from "../../assets/images/play-icon.png";
+import IconReset from "../../assets/images/reset-icon.png";
+import { MainIcon, SettingContent } from "./setting.style";
 
 function Setting() {
-  const [open, setOpen] = useState<boolean>(false);
+  const {
+    state: { play, lives },
+    dispatch,
+  } = useContext(GameContext);
+  const numberOfLives = lives.some((x) => x.show);
+  const continuePlay = () => {
+    dispatch({
+      type: Types.SetPlay,
+      payload: {
+        play: true,
+      },
+    });
+  };
+
   return (
-    <>
-      <button onClick={() => setOpen(true)}>open</button>
-      <Modal isOpen={open} onClose={() => setOpen(false)}>
-        setting
-      </Modal>
-    </>
+    <Modal isOpen={!play} onClose={continuePlay}>
+      <SettingContent>
+        {numberOfLives ? (
+          <MainIcon src={IconPlay} onClick={continuePlay} />
+        ) : (
+          <MainIcon src={IconReset} />
+        )}
+      </SettingContent>
+    </Modal>
   );
 }
 
