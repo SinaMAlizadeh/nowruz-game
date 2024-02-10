@@ -9,6 +9,7 @@ import Setting from "./components/setting";
 import { GameContext } from "./context/gameContext";
 import { Types } from "./context/reducers";
 import useDetectTabFocus from "./hooks/useCheckTabFocus";
+import Point from "./components/point";
 
 function App() {
   const ref = useRef<HTMLDivElement>(null);
@@ -43,8 +44,9 @@ function App() {
     }
     window.addEventListener("resize", updateSize);
     updateSize();
+
     return () => window.removeEventListener("resize", updateSize);
-  }, []);
+  }, [state?.duration]);
 
   useDetectTabFocus();
 
@@ -71,6 +73,7 @@ function App() {
           }}
         >
           <Setting />
+          <Point />
           <Lives />
           <Clouds />
           <Enemies playerRef={ref} />

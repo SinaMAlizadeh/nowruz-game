@@ -6,12 +6,15 @@ import { GameContext } from "../../context/gameContext";
 function Land() {
   const { state } = useContext(GameContext);
   return (
-    <LandImg
-      width={state?.width}
-      src={LandImgLogo}
-      $animationDuration={state?.duration}
-      $isPlay={state?.play}
-    />
+    <>
+      {state?.duration}
+      <LandImg
+        width={state?.width}
+        src={LandImgLogo}
+        $animationDuration={state?.duration}
+        $isPlay={state?.play}
+      />
+    </>
   );
 }
 

@@ -2,7 +2,7 @@ import { Dispatch, ReactNode, createContext, useReducer } from "react";
 import { Live } from "../models/live";
 import { GameActions, gameReducer } from "./reducers";
 
-const useLives: Array<Live> = [
+export const useLives: Array<Live> = [
   {
     id: 1,
     show: true,
