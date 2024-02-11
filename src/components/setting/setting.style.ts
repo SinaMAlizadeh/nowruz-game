@@ -9,5 +9,12 @@ export const SettingContent = styled.div`
 
 export const MainIcon = styled.img`
   width: 150px;
-  margin: 200px;
+  margin-top: 200px;
+`;
+
+export const MenuItems = styled.div`
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 `;

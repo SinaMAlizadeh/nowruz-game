@@ -20,6 +20,7 @@ export enum Types {
   SetPlay = "SET_PLAY",
   ResetGame = "ResetGame",
   SetPoint = "SetPoint",
+  SetGameSound = "SetGameSound",
 }
 
 type GamePayload = {
@@ -39,11 +40,17 @@ type GamePayload = {
   [Types.SetPoint]: {
     point: number;
   };
+  [Types.SetGameSound]: {
+    sound: boolean;
+  };
 };
 
 export type GameActions = ActionMap<GamePayload>[keyof ActionMap<GamePayload>];
 
-export const gameReducer = (state: GameState, action: GameActions) => {
+export const gameReducer = (
+  state: GameState,
+  action: GameActions
+): GameState => {
   switch (action.type) {
     case Types.SetDuration:
       return {
@@ -83,6 +90,11 @@ export const gameReducer = (state: GameState, action: GameActions) => {
       return {
         ...state,
         point: action?.payload?.point,
+      };
+    case Types.SetGameSound:
+      return {
+        ...state,
+        sound: action?.payload?.sound,
       };
     default:
       return state;

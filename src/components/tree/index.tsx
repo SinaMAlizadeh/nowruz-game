@@ -63,7 +63,7 @@ function Tree({
         if (removedLives.some((x) => x.index === index)) {
           return;
         }
-        playAudio();
+        playAudio(state?.sound);
         let isSetTrue = false;
         const lives = state?.lives.map((x) => {
           if (!isSetTrue && x.show) {
@@ -98,6 +98,7 @@ function Tree({
     <>
       {show ? (
         <TreeContainer>
+          {state?.sound ? "on" : "off"} asdasasdasd
           <TreeImg
             $play={state?.play}
             width={state?.width}

@@ -24,6 +24,7 @@ export type GameState = {
   hight: number;
   play: boolean;
   point: number;
+  sound: boolean;
 };
 
 const initialState: GameState = {
@@ -33,6 +34,7 @@ const initialState: GameState = {
   width: 0,
   play: false,
   point: 0,
+  sound: true,
 };
 
 const GameContext = createContext<{
