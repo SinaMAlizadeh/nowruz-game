@@ -27,4 +27,8 @@ export const LandImg = styled.div<LandImgProps>`
   bottom: 0;
   right: -${(p) => p.width}px;
   height: 100px;
+  @media only screen and (max-width: 480px) {
+    height: 200px;
+    background-size: 400px 200px;
+  }
 `;

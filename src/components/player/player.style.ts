@@ -19,6 +19,9 @@ const Running = keyframes`
 const MoveUp = keyframes`
   0% {
     bottom: 100px;
+    @media only screen and (max-width: 480px) {
+      bottom: 200px;
+  }
   }
   100% {
     bottom: 350px;
@@ -37,6 +40,9 @@ const MoveDown = keyframes`
   }
   100% {
     bottom: 100px;
+    @media only screen and (max-width: 480px) {
+      bottom: 200px;
+  }
   }
 `;
 
@@ -63,11 +69,11 @@ const PlayerCharacter = styled.div<Props>`
       animation: ${MoveUp} 0.3s forwards, ${StayTop} 0.07s forwards 0.3s,
         ${MoveDown} 0.4s forwards 0.37s;
     `}
-
-  @media only screen and (max-width: 600px) {
-    bottom: 100px;
-    left: 10px;
-    width: 16%;
+  @media only screen and (max-width: 480px) {
+    width: 70px;
+    height: 70px;
+    background-size: 70px 70px;
+    bottom: 200px;
   }
 `;
 
