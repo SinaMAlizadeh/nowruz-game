@@ -3,6 +3,7 @@ import TreeIcon from "../../assets/images/snowMan.png";
 import { TreeContainer, TreeImg } from "./tree.style";
 import { GameContext } from "../../context/gameContext";
 import { Types } from "../../context/reducers";
+import useCollapseSound from "../../hooks/useCollapsSound";
 
 interface TreeProps {
   animationDuration: number;
@@ -21,6 +22,7 @@ function Tree({
   const { state, dispatch } = useContext(GameContext);
   const [show, setShow] = useState<boolean>(false);
   const treeRef = useRef<HTMLImageElement>(null);
+  const { playAudio } = useCollapseSound();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -61,6 +63,7 @@ function Tree({
         if (removedLives.some((x) => x.index === index)) {
           return;
         }
+        playAudio();
         let isSetTrue = false;
         const lives = state?.lives.map((x) => {
           if (!isSetTrue && x.show) {
@@ -73,6 +76,7 @@ function Tree({
           }
           return x;
         });
+
         dispatch({
           type: Types.SetLives,
           payload: {

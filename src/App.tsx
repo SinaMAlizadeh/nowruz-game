@@ -11,6 +11,7 @@ import { Types } from "./context/reducers";
 import useDetectTabFocus from "./hooks/useCheckTabFocus";
 import Point from "./components/point";
 import usePlayerPoint from "./hooks/usePlayerPoint";
+import { GameContainer, GameLand } from "./app.style";
 
 function App() {
   const ref = useRef<HTMLDivElement>(null);
@@ -54,26 +55,8 @@ function App() {
 
   return (
     <>
-      <div
-        style={{
-          height: "100svh",
-          width: "100% ",
-          position: "relative",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <div
-          style={{
-            height: "100vh",
-            width: "100%",
-            position: "relative",
-            overflow: "hidden",
-            backgroundColor: "#91dcff",
-            maxWidth: "1920px",
-          }}
-        >
+      <GameContainer>
+        <GameLand>
           <Setting />
           <Point />
           <Lives />
@@ -81,8 +64,8 @@ function App() {
           <Enemies playerRef={ref} />
           <Player ref={ref} />
           <Land />
-        </div>
-      </div>
+        </GameLand>
+      </GameContainer>
     </>
   );
 }
