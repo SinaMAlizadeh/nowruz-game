@@ -7,7 +7,6 @@ function Land() {
   const { state } = useContext(GameContext);
   return (
     <>
-      {state?.duration}
       <LandImg
         width={state?.width}
         src={LandImgLogo}

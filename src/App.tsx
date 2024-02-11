@@ -10,6 +10,7 @@ import { GameContext } from "./context/gameContext";
 import { Types } from "./context/reducers";
 import useDetectTabFocus from "./hooks/useCheckTabFocus";
 import Point from "./components/point";
+import usePlayerPoint from "./hooks/usePlayerPoint";
 
 function App() {
   const ref = useRef<HTMLDivElement>(null);
@@ -49,6 +50,7 @@ function App() {
   }, [state?.duration]);
 
   useDetectTabFocus();
+  usePlayerPoint();
 
   return (
     <>

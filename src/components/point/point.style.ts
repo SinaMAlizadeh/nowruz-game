@@ -11,3 +11,11 @@ export const PointContent = styled.div`
   left: 20px;
   top: 40px;
 `;
+
+export const PointNumber = styled.b`
+  color: white;
+  display: flex;
+  justify-content: start;
+  padding-top: 12px;
+  padding-right: 20px;
+`;

@@ -1,10 +1,13 @@
 import { useContext } from "react";
-import { PointContent } from "./point.style";
+import { PointContent, PointNumber } from "./point.style";
 import { GameContext } from "../../context/gameContext";
 import { Types } from "../../context/reducers";
 
 function Point() {
-  const { dispatch } = useContext(GameContext);
+  const {
+    dispatch,
+    state: { point },
+  } = useContext(GameContext);
   return (
     <PointContent
       onClick={() =>
@@ -16,7 +19,7 @@ function Point() {
         })
       }
     >
-      120
+      <PointNumber>{point}</PointNumber>
     </PointContent>
   );
 }

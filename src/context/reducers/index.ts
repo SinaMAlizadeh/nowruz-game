@@ -19,6 +19,7 @@ export enum Types {
   SetWidth = "SET_WIDTH",
   SetPlay = "SET_PLAY",
   ResetGame = "ResetGame",
+  SetPoint = "SetPoint",
 }
 
 type GamePayload = {
@@ -35,6 +36,9 @@ type GamePayload = {
     play: boolean;
   };
   [Types.ResetGame]: undefined;
+  [Types.SetPoint]: {
+    point: number;
+  };
 };
 
 export type GameActions = ActionMap<GamePayload>[keyof ActionMap<GamePayload>];
@@ -73,6 +77,12 @@ export const gameReducer = (state: GameState, action: GameActions) => {
         lives: useLives,
         width: 0,
         play: true,
+        point: 0,
+      };
+    case Types.SetPoint:
+      return {
+        ...state,
+        point: action?.payload?.point,
       };
     default:
       return state;
