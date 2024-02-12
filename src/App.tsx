@@ -1,17 +1,16 @@
 import { useContext, useEffect, useLayoutEffect, useRef } from "react";
 import "./App.css";
+import { GameContainer, GameLand } from "./app.style";
 import Clouds from "./components/clouds";
 import Enemies from "./components/enemies";
 import Land from "./components/land";
 import Lives from "./components/lives";
 import Player from "./components/player";
+import Point from "./components/point";
 import Setting from "./components/setting";
 import { GameContext } from "./context/gameContext";
 import { Types } from "./context/reducers";
 import useDetectTabFocus from "./hooks/useCheckTabFocus";
-import Point from "./components/point";
-import usePlayerPoint from "./hooks/usePlayerPoint";
-import { GameContainer, GameLand } from "./app.style";
 
 function App() {
   const ref = useRef<HTMLDivElement>(null);
@@ -43,6 +42,14 @@ function App() {
           width: window.innerWidth,
         },
       });
+      if (window?.innerWidth < 480) {
+        dispatch({
+          type: Types?.SetDuration,
+          payload: {
+            duration: 2,
+          },
+        });
+      }
     }
     window.addEventListener("resize", updateSize);
     updateSize();
@@ -51,7 +58,6 @@ function App() {
   }, [state?.duration]);
 
   useDetectTabFocus();
-  usePlayerPoint();
 
   return (
     <>

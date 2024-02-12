@@ -8,13 +8,18 @@ export const SettingContent = styled.div`
 `;
 
 export const MainIcon = styled.img`
-  width: 150px;
-  margin-top: 200px;
+  width: 25%;
+  margin-top: 25%;
 `;
 
 export const MenuItems = styled.div`
   padding-top: 50px;
+  padding-bottom: 50px;
   display: flex;
   justify-content: center;
   gap: 10px;
+`;
+
+export const MenuItem = styled.img`
+  width: 15%;
 `;

@@ -16,4 +16,5 @@ export const GameLand = styled.div`
   overflow: hidden;
   background-color: #91dcff;
   max-width: 1920px;
+  min-width: 375px;
 `;

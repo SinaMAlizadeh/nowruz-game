@@ -2,12 +2,11 @@ import { useContext } from "react";
 import { PointContent, PointNumber } from "./point.style";
 import { GameContext } from "../../context/gameContext";
 import { Types } from "../../context/reducers";
+import usePlayerPoint from "../../hooks/usePlayerPoint";
 
 function Point() {
-  const {
-    dispatch,
-    state: { point },
-  } = useContext(GameContext);
+  const { dispatch } = useContext(GameContext);
+  const { point } = usePlayerPoint();
   return (
     <PointContent
       onClick={() =>

@@ -4,7 +4,7 @@ import { GameContext } from "../../context/gameContext";
 import { Types } from "../../context/reducers";
 import IconPlay from "../../assets/images/play-icon.png";
 import IconReset from "../../assets/images/reset-icon.png";
-import { MainIcon, MenuItems, SettingContent } from "./setting.style";
+import { MainIcon, MenuItem, MenuItems, SettingContent } from "./setting.style";
 import playerHasLive from "../../context/reducers/helper";
 
 function Setting() {
@@ -47,11 +47,11 @@ function Setting() {
         )}
 
         <MenuItems>
-          <img src={IconPlay} width={50} onClick={soundToggle} />{" "}
+          <MenuItem src={IconPlay} onClick={soundToggle} />{" "}
           {sound ? "on" : "off"}
-          <img src={IconPlay} width={50} />
-          <img src={IconPlay} width={50} />
-          <img src={IconPlay} width={50} />
+          <MenuItem src={IconPlay} />
+          <MenuItem src={IconPlay} />
+          <MenuItem src={IconPlay} />
         </MenuItems>
       </SettingContent>
     </Modal>

@@ -14,6 +14,10 @@ export const TreeContainer = styled.div`
   height: 120px;
   position: absolute;
   bottom: 90px;
+  @media only screen and (max-width: 480px) {
+    bottom: 190px;
+    height: 85px;
+  }
 `;
 
 interface TreeImgProps {
@@ -31,4 +35,7 @@ export const TreeImg = styled.img<TreeImgProps>`
   position: absolute;
   bottom: 0;
   animation-play-state: ${(props) => (props?.$play ? "running" : "paused")};
+  @media only screen and (max-width: 480px) {
+    height: 85px;
+  }
 `;

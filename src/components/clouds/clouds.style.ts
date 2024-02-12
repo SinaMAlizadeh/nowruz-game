@@ -17,7 +17,7 @@ export const Cloud = styled.img`
   right: 20%;
   animation: ${upDown} 3s ease-in-out infinite;
   position: absolute;
-  top: 10%;
+  top: 20%;
   @media (max-width: 600px) {
     height: 16%;
   }

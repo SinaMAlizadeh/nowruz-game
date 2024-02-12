@@ -98,7 +98,6 @@ function Tree({
     <>
       {show ? (
         <TreeContainer>
-          {state?.sound ? "on" : "off"} asdasasdasd
           <TreeImg
             $play={state?.play}
             width={state?.width}

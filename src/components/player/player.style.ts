@@ -3,6 +3,10 @@ import Amou1 from "../../assets/images/amou-v1.png";
 import Amou2 from "../../assets/images/amou-v1-2.png";
 import Amou3 from "../../assets/images/amou-v1-3.png";
 
+const TOP: string = "350px";
+const BOTTOM: string = "100px";
+const TOP_XS: string = "400px";
+const BOTTOM_XS: string = "200px";
 // Define keyframes for the Running and Jump animations
 const Running = keyframes`
   0% {
@@ -16,33 +20,27 @@ const Running = keyframes`
   }
 `;
 
-const MoveUp = keyframes`
+const MoveUp = (bottom: string, top: string) => keyframes`
   0% {
-    bottom: 100px;
-    @media only screen and (max-width: 480px) {
-      bottom: 200px;
-  }
+    bottom: ${bottom};
   }
   100% {
-    bottom: 350px;
+    bottom: ${top};
   }
 `;
 
-const StayTop = keyframes`
+const StayTop = (top: string) => keyframes`
   0%, 100% {
-    bottom: 350px;
+    bottom: ${top};
   }
 `;
 
-const MoveDown = keyframes`
+const MoveDown = (bottom: string, top: string) => keyframes`
   0% {
-    bottom: 350px;
+    bottom: ${top};
   }
   100% {
-    bottom: 100px;
-    @media only screen and (max-width: 480px) {
-      bottom: 200px;
-  }
+    bottom: ${bottom};
   }
 `;
 
@@ -66,14 +64,22 @@ const PlayerCharacter = styled.div<Props>`
   ${({ $isJumping }) =>
     $isJumping &&
     css`
-      animation: ${MoveUp} 0.3s forwards, ${StayTop} 0.07s forwards 0.3s,
-        ${MoveDown} 0.4s forwards 0.37s;
+      animation: ${MoveUp(BOTTOM, TOP)} 0.3s forwards,
+        ${StayTop(TOP)} 0.07s forwards 0.3s,
+        ${MoveDown(BOTTOM, TOP)} 0.4s forwards 0.37s;
     `}
   @media only screen and (max-width: 480px) {
     width: 70px;
     height: 70px;
     background-size: 70px 70px;
     bottom: 200px;
+    ${({ $isJumping }) =>
+      $isJumping &&
+      css`
+        animation: ${MoveUp(BOTTOM_XS, TOP_XS)} 0.3s forwards,
+          ${StayTop(TOP_XS)} 0.07s forwards 0.3s,
+          ${MoveDown(BOTTOM_XS, TOP_XS)} 0.4s forwards 0.37s;
+      `}
   }
 `;
 

@@ -17,6 +17,7 @@ function Enemies({ playerRef }: Props) {
   const {
     state: { duration, play },
   } = useContext(GameContext);
+
   const [index, setIndex] = useState<number>(0);
   const [list, setList] = useState<Enemy[]>([]);
 

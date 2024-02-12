@@ -22,13 +22,17 @@ export const ModalContent = styled.div<Props>`
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
-  width: 600px;
-  height: 600px;
+  width: 500px;
+
   padding: 20px;
   border-radius: 5px;
   z-index: 1051;
-  max-width: 100%;
-  max-height: 90vh;
   overflow: hidden;
   position: relative;
+  left: auto;
+  margin-right: auto;
+  margin-left: auto;
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
