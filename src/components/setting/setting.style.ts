@@ -33,7 +33,7 @@ export const MenuItem = styled.div<Props>`
   height: 50px;
   position: relative;
   ${(props) =>
-    props.$off &&
+    !props.$off &&
     css`
       &:after {
         content: "";

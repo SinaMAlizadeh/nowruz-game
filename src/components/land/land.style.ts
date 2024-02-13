@@ -22,8 +22,7 @@ export const LandImg = styled.div<LandImgProps>`
     linear infinite;
   background-image: url(${(p) => p.src});
   position: absolute;
-
-  background-size: 100px 100px;
+  background-size: 300px 100px;
   animation-play-state: ${(props) => (props?.$isPlay ? "running" : "paused")};
   left: 0;
   bottom: 0;

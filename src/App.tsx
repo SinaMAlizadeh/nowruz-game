@@ -25,7 +25,6 @@ function App() {
         },
       });
     }, 30000);
-
     dispatch({
       type: Types.SetPlay,
       payload: {
@@ -47,6 +46,14 @@ function App() {
           type: Types?.SetDuration,
           payload: {
             duration: 2,
+          },
+        });
+      }
+      if (window?.innerWidth > 480 && window?.innerWidth < 1200) {
+        dispatch({
+          type: Types?.SetDuration,
+          payload: {
+            duration: 3,
           },
         });
       }

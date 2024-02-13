@@ -1,4 +1,10 @@
-import { RefObject, useContext, useEffect, useState } from "react";
+import {
+  RefObject,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from "react";
 import Tree from "../tree";
 
 import { GameContext } from "../../context/gameContext";
@@ -42,6 +48,16 @@ function Enemies({ playerRef }: Props) {
       setIndex(0);
     }
   }, [duration]);
+
+  useLayoutEffect(() => {
+    function updateSize() {
+      setList([]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
 
   return (
     <>
