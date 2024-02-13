@@ -3,6 +3,7 @@ import Modal from "../modal";
 import { GameContext } from "../../context/gameContext";
 import { Types } from "../../context/reducers";
 import IconPlay from "../../assets/images/play-icon.png";
+import IconSound from "../../assets/images/sound-icon.png";
 import IconReset from "../../assets/images/reset-icon.png";
 import { MainIcon, MenuItem, MenuItems, SettingContent } from "./setting.style";
 import playerHasLive from "../../context/reducers/helper";
@@ -47,11 +48,11 @@ function Setting() {
         )}
 
         <MenuItems>
-          <MenuItem src={IconPlay} onClick={soundToggle} />{" "}
-          {sound ? "on" : "off"}
-          <MenuItem src={IconPlay} />
-          <MenuItem src={IconPlay} />
-          <MenuItem src={IconPlay} />
+          <MenuItem $src={IconSound} $off={sound} onClick={soundToggle} />
+
+          <MenuItem $src={IconPlay} />
+          <MenuItem $src={IconPlay} />
+          <MenuItem $src={IconPlay} />
         </MenuItems>
       </SettingContent>
     </Modal>

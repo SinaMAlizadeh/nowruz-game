@@ -1,11 +1,11 @@
 import styled, { keyframes } from "styled-components";
 
-export const slideInOut = (y: number) => keyframes`
+export const slideInOut = (width: number) => keyframes`
  from {
-    transform: translateX(${y}px); /* Start off-screen right */
+    transform: translateX(${width}px); /* Start off-screen right */
   }
  to {
-    transform: translateX(-${y}px); /* Slide in completely */
+    transform: translateX(-${width}px); /* Slide in completely */
   }
 `;
 

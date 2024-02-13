@@ -1,11 +1,11 @@
 import styled, { keyframes } from "styled-components";
 
-export const slideInOut = keyframes`
+export const slideInOut = (width: number) => keyframes`
   0% {
     background-position: right;
   }
   100% {
-    background-position: left;
+    background-position: -${width}px;
   }
 `;
 
@@ -18,10 +18,12 @@ interface LandImgProps {
 }
 
 export const LandImg = styled.div<LandImgProps>`
-  animation: ${slideInOut} ${(p) => p.$animationDuration}s linear infinite;
+  animation: ${(p) => slideInOut(p.width)} ${(p) => p.$animationDuration}s
+    linear infinite;
   background-image: url(${(p) => p.src});
   position: absolute;
-  background-size: 400px 100px;
+
+  background-size: 100px 100px;
   animation-play-state: ${(props) => (props?.$isPlay ? "running" : "paused")};
   left: 0;
   bottom: 0;
@@ -29,6 +31,6 @@ export const LandImg = styled.div<LandImgProps>`
   height: 100px;
   @media only screen and (max-width: 480px) {
     height: 200px;
-    background-size: 400px 200px;
+    background-size: 120px 200px;
   }
 `;
