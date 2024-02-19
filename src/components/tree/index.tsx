@@ -54,7 +54,7 @@ function Tree({
       if (
         playerPos &&
         treePos &&
-        playerPos.x < treePos.x + treePos.width &&
+        playerPos.x < treePos.x + treePos.width - 50 &&
         playerPos.x + playerPos.width > treePos.x &&
         playerPos.y < treePos.y + treePos.height &&
         playerPos.y + playerPos.height > treePos.y

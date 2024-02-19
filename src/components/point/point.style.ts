@@ -12,7 +12,7 @@ export const PointContent = styled.div`
   top: 40px;
   @media only screen and (max-width: 480px) {
     height: 50px;
-    width: 90px;
+    width: 100px;
   }
 `;
 
