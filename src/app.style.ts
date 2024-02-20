@@ -6,11 +6,11 @@ export const GameContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: s center;
 `;
 
 export const GameLand = styled.div`
-  height: 100vh;
+  height: 100svh;
   width: 100%;
   position: relative;
   overflow: hidden;

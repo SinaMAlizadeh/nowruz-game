@@ -1,4 +1,6 @@
 import styled, { keyframes } from "styled-components";
+import Xs_land from "../../assets/images/lang_xs.png";
+import Land from "../../assets/images/longland_v1.png";
 
 export const slideInOut = (width: number) => keyframes`
   0% {
@@ -20,9 +22,9 @@ interface LandImgProps {
 export const LandImg = styled.div<LandImgProps>`
   animation: ${(p) => slideInOut(p.width)} ${(p) => p.$animationDuration}s
     linear infinite;
-  background-image: url(${(p) => p.src});
+  background-image: url(${Land});
   position: absolute;
-  background-size: 300px 100px;
+  background-size: 400px 100px;
   animation-play-state: ${(props) => (props?.$isPlay ? "running" : "paused")};
   left: 0;
   bottom: 0;
@@ -30,6 +32,7 @@ export const LandImg = styled.div<LandImgProps>`
   height: 100px;
   @media only screen and (max-width: 480px) {
     height: 200px;
-    background-size: 120px 200px;
+    background-size: 400px 200px;
+    background-image: url(${Xs_land});
   }
 `;

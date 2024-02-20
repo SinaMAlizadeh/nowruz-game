@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import ReactDOM from "react-dom";
 import { ModalContent, ModalOverlay } from "./modal.style";
-import ModalBox from "../../assets/images/modal-box.png";
+import ModalBox from "../../assets/images/modal-box_v1.png";
 
 interface ModalProps extends PropsWithChildren {
   isOpen: boolean;
