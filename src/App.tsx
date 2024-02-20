@@ -60,9 +60,8 @@ function App() {
     }
     window.addEventListener("resize", updateSize);
     updateSize();
-
     return () => window.removeEventListener("resize", updateSize);
-  }, [state?.duration]);
+  }, [dispatch, state.duration]);
 
   useDetectTabFocus();
 
