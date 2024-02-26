@@ -21,6 +21,7 @@ export enum Types {
   ResetGame = "ResetGame",
   SetPoint = "SetPoint",
   SetGameSound = "SetGameSound",
+  SetShowInfo = "SetShowInfo",
 }
 
 type GamePayload = {
@@ -42,6 +43,9 @@ type GamePayload = {
   };
   [Types.SetGameSound]: {
     sound: boolean;
+  };
+  [Types.SetShowInfo]: {
+    show: boolean;
   };
 };
 
@@ -95,6 +99,11 @@ export const gameReducer = (
       return {
         ...state,
         sound: action?.payload?.sound,
+      };
+    case Types.SetShowInfo:
+      return {
+        ...state,
+        showInfo: action?.payload?.show,
       };
     default:
       return state;

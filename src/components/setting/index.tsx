@@ -5,12 +5,14 @@ import { Types } from "../../context/reducers";
 import IconPlay from "../../assets/images/play-icon.png";
 import IconSound from "../../assets/images/sound-icon.png";
 import IconReset from "../../assets/images/reset-icon.png";
+import IconInfo from "../../assets/images/info-icon.png";
 import { MainIcon, MenuItem, MenuItems, SettingContent } from "./setting.style";
 import playerHasLive from "../../context/reducers/helper";
+import GameInfo from "./components/info";
 
 function Setting() {
   const {
-    state: { play, lives, sound },
+    state: { play, lives, sound, showInfo },
     dispatch,
   } = useContext(GameContext);
   const numberOfLives = playerHasLive(lives);
@@ -38,22 +40,34 @@ function Setting() {
     });
   };
 
+  const infoHandler = () => {
+    dispatch({
+      type: Types.SetShowInfo,
+      payload: {
+        show: true,
+      },
+    });
+  };
+
   return (
     <Modal isOpen={!play} onClose={continuePlay}>
       <SettingContent>
-        {numberOfLives ? (
-          <MainIcon src={IconPlay} onClick={continuePlay} />
+        {showInfo ? (
+          <GameInfo />
         ) : (
-          <MainIcon src={IconReset} onClick={resetGame} />
+          <>
+            {numberOfLives ? (
+              <MainIcon src={IconPlay} onClick={continuePlay} />
+            ) : (
+              <MainIcon src={IconReset} onClick={resetGame} />
+            )}
+
+            <MenuItems>
+              <MenuItem $src={IconSound} $off={sound} onClick={soundToggle} />
+              <MenuItem $src={IconInfo} $off={true} onClick={infoHandler} />
+            </MenuItems>
+          </>
         )}
-
-        <MenuItems>
-          <MenuItem $src={IconSound} $off={sound} onClick={soundToggle} />
-
-          <MenuItem $src={IconPlay} />
-          <MenuItem $src={IconPlay} />
-          <MenuItem $src={IconPlay} />
-        </MenuItems>
       </SettingContent>
     </Modal>
   );
