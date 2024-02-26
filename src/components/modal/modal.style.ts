@@ -10,7 +10,7 @@ export const ModalOverlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1050; // Make sure it's above other content: ;
+  z-index: 1050;
 `;
 
 type Props = {
@@ -23,7 +23,6 @@ export const ModalContent = styled.div<Props>`
   background-repeat: no-repeat;
   background-position: center;
   width: 500px;
-
   padding: 20px;
   border-radius: 5px;
   z-index: 1051;
