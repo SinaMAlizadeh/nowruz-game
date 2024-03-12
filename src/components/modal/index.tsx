@@ -17,7 +17,7 @@ const Modal = ({ isOpen, children }: ModalProps) => {
         {children}
       </ModalContent>
     </ModalOverlay>,
-    document.getElementById("root")! // Use the created div as the portal target
+    document.getElementById("root")!
   );
 };
 

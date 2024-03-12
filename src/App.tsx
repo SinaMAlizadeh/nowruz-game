@@ -1,4 +1,4 @@
-import { useContext, useEffect, useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 import "./App.css";
 import { GameContainer, GameLand } from "./app.style";
 import Clouds from "./components/clouds";
@@ -8,61 +8,15 @@ import Lives from "./components/lives";
 import Player from "./components/player";
 import Point from "./components/point";
 import Setting from "./components/setting";
-import { GameContext } from "./context/gameContext";
-import { Types } from "./context/reducers";
 import useDetectTabFocus from "./hooks/useCheckTabFocus";
+import useDetectResize from "./hooks/useDetectResize";
+import useGameStater from "./hooks/useGameStater";
 
 function App() {
   const ref = useRef<HTMLDivElement>(null);
-  const { dispatch, state } = useContext(GameContext);
 
-  useEffect(() => {
-    setInterval(() => {
-      dispatch({
-        type: Types.SetDuration,
-        payload: {
-          duration: state?.duration - 0.5 > 0 ? state?.duration - 0.5 : 0,
-        },
-      });
-    }, 30000);
-    dispatch({
-      type: Types.SetPlay,
-      payload: {
-        play: true,
-      },
-    });
-  }, []);
-
-  useLayoutEffect(() => {
-    function updateSize() {
-      dispatch({
-        type: Types?.SetWidth,
-        payload: {
-          width: window.innerWidth,
-        },
-      });
-      if (window?.innerWidth < 480) {
-        dispatch({
-          type: Types?.SetDuration,
-          payload: {
-            duration: 2,
-          },
-        });
-      }
-      if (window?.innerWidth > 480 && window?.innerWidth < 1200) {
-        dispatch({
-          type: Types?.SetDuration,
-          payload: {
-            duration: 3,
-          },
-        });
-      }
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, [dispatch, state.duration]);
-
+  useGameStater();
+  useDetectResize();
   useDetectTabFocus();
 
   return (

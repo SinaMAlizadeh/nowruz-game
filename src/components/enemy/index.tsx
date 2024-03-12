@@ -1,24 +1,28 @@
 import { RefObject, useContext, useEffect, useRef, useState } from "react";
-import TreeIcon from "../../assets/images/snowMan.png";
-import { TreeContainer, TreeImg } from "./tree.style";
+import FireIcon from "../../assets/images/fire_v1.png";
+import SnowManIcon from "../../assets/images/snowMan.png";
 import { GameContext } from "../../context/gameContext";
 import { Types } from "../../context/reducers";
 import useCollapseSound from "../../hooks/useCollapsSound";
+import { EnemyContainer, EnemyImg } from "./tree.style";
+import { enemyType } from "../../models/TEnemy";
 
-interface TreeProps {
+interface EnemyProps {
   animationDuration: number;
   delay?: number;
   index: number;
   removeItem: (index: number) => void;
   playerRef: RefObject<HTMLDivElement>;
+  enemyType: enemyType;
 }
-function Tree({
+function Enemy({
   animationDuration,
   delay,
   index,
   removeItem,
   playerRef,
-}: TreeProps) {
+  enemyType,
+}: EnemyProps) {
   const { state, dispatch } = useContext(GameContext);
   const [show, setShow] = useState<boolean>(false);
   const treeRef = useRef<HTMLImageElement>(null);
@@ -47,7 +51,6 @@ function Tree({
 
   useEffect(() => {
     // const playerRect = playerRef?.current?.getBoundingClientRect();
-
     const checkCollision = () => {
       const playerPos = playerRef?.current?.getBoundingClientRect();
       const treePos = treeRef?.current?.getBoundingClientRect();
@@ -97,15 +100,15 @@ function Tree({
   return (
     <>
       {show ? (
-        <TreeContainer>
-          <TreeImg
+        <EnemyContainer>
+          <EnemyImg
             $play={state?.play}
             width={state?.width}
             ref={treeRef}
             $animationDuration={animationDuration}
-            src={TreeIcon}
+            src={enemyType === 0 ? FireIcon : SnowManIcon}
           />
-        </TreeContainer>
+        </EnemyContainer>
       ) : (
         ""
       )}
@@ -113,4 +116,4 @@ function Tree({
   );
 }
 
-export default Tree;
+export default Enemy;

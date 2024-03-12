@@ -16,6 +16,6 @@ export const InfoBody = styled.div`
   overflow-y: scroll;
   height: 100%;
   font-weight: 500;
-  max-height: 200px;
+  max-height: 177px;
   text-align: justify;
 `;

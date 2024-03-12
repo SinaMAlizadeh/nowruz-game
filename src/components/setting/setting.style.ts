@@ -20,6 +20,19 @@ export const MenuItems = styled.div`
   gap: 10px;
 `;
 
+export const ModalHeader = styled.div`
+  position: absolute;
+  top: 20px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: fantasy;
+  font-weight: 100;
+  font-size: 2rem;
+  color: black;
+`;
+
 type Props = {
   $off?: boolean;
   $src: string;

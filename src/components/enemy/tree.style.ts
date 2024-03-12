@@ -9,7 +9,7 @@ export const slideInOut = (width: number) => keyframes`
   }
 `;
 
-export const TreeContainer = styled.div`
+export const EnemyContainer = styled.div`
   width: 100%;
   height: 120px;
   position: absolute;
@@ -20,14 +20,14 @@ export const TreeContainer = styled.div`
   }
 `;
 
-interface TreeImgProps {
+interface EnemyImgProps {
   $animationDuration: number;
   delay?: number;
   width: number;
   $play: boolean;
 }
 
-export const TreeImg = styled.img<TreeImgProps>`
+export const EnemyImg = styled.img<EnemyImgProps>`
   height: 120px;
   width: auto;
   animation: ${(props) => slideInOut(props.width)}

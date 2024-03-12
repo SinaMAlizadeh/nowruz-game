@@ -1,4 +1,5 @@
 import { Live } from "../../models/live";
+import { WINNER_POINTER } from "../../utilities/const";
 import { GameState, useLives } from "../gameContext";
 import playerHasLive from "./helper";
 
@@ -22,6 +23,7 @@ export enum Types {
   SetPoint = "SetPoint",
   SetGameSound = "SetGameSound",
   SetShowInfo = "SetShowInfo",
+  PlayerWin = "PlayerWin",
 }
 
 type GamePayload = {
@@ -46,6 +48,9 @@ type GamePayload = {
   };
   [Types.SetShowInfo]: {
     show: boolean;
+  };
+  [Types.PlayerWin]: {
+    win: boolean;
   };
 };
 
@@ -89,6 +94,7 @@ export const gameReducer = (
         width: 0,
         play: true,
         point: 0,
+        win: false,
       };
     case Types.SetPoint:
       return {
@@ -104,6 +110,13 @@ export const gameReducer = (
       return {
         ...state,
         showInfo: action?.payload?.show,
+      };
+    case Types.PlayerWin:
+      return {
+        ...state,
+        play: false,
+        point: WINNER_POINTER,
+        win: true,
       };
     default:
       return state;

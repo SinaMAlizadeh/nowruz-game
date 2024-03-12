@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../context/gameContext";
 import { Types } from "../context/reducers";
+import { WINNER_POINTER } from "../utilities/const";
 
 function usePlayerPoint() {
   const {
-    state: { play, duration, point: mainPoint },
+    state: { play, duration, point: mainPoint, win },
     dispatch,
   } = useContext(GameContext);
 
@@ -21,6 +22,17 @@ function usePlayerPoint() {
   }, [point, play]);
 
   useEffect(() => {
+    if (point === WINNER_POINTER) {
+      dispatch({
+        type: Types.PlayerWin,
+        payload: {
+          win: true,
+        },
+      });
+    }
+  }, [point]);
+
+  useEffect(() => {
     if (mainPoint === 0) {
       setPoint(0);
     }
@@ -30,7 +42,7 @@ function usePlayerPoint() {
     });
   }, [play]);
 
-  return { point };
+  return { point, win };
 }
 
 export default usePlayerPoint;
