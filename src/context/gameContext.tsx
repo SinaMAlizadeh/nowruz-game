@@ -1,21 +1,7 @@
 import { Dispatch, ReactNode, createContext, useReducer } from "react";
 import { Live } from "../models/live";
 import { GameActions, gameReducer } from "./reducers";
-
-export const useLives: Array<Live> = [
-  {
-    id: 1,
-    show: true,
-  },
-  {
-    id: 2,
-    show: true,
-  },
-  {
-    id: 3,
-    show: true,
-  },
-];
+import { lives } from "../utilities/const";
 
 export type GameState = {
   lives: Array<Live>;
@@ -32,7 +18,7 @@ export type GameState = {
 const initialState: GameState = {
   duration: 5,
   hight: 0,
-  lives: useLives,
+  lives: lives,
   width: 0,
   play: false,
   point: 0,

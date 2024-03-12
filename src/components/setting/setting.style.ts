@@ -31,6 +31,9 @@ export const ModalHeader = styled.div`
   font-weight: 100;
   font-size: 2rem;
   color: black;
+  @media only screen and (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 type Props = {

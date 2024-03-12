@@ -1,65 +1,41 @@
-import {
-  RefObject,
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useState,
-} from "react";
-import { GameContext } from "../../context/gameContext";
-import Enemy from "../enemy";
+import { RefObject, useState } from "react";
 import { EnemyDto } from "../../models/TEnemy";
-import { getTypeOfEnemies } from "../../utilities/getTypeOfEnemies";
+import Enemy from "../enemy";
+import useAddEnemies from "./hooks/useAddEnemies";
+import useChangeSizeHandler from "./hooks/useChangeSizeHandler";
+import usePlayerLose from "./hooks/usePlayerLose";
 
 type Props = {
   playerRef: RefObject<HTMLDivElement>;
 };
 
 function Enemies({ playerRef }: Props) {
-  const {
-    state: { duration, play },
-  } = useContext(GameContext);
-
   const [index, setIndex] = useState<number>(0);
-  const [list, setList] = useState<EnemyDto[]>([]);
+  const [enemies, setEnemies] = useState<EnemyDto[]>([]);
 
   const removeItem = (index: number) => {
-    setList((prev) => prev.filter((x) => x.index !== index));
+    setEnemies((prev) => prev.filter((x) => x.index !== index));
   };
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (play) {
-        const delay = Math.floor(0 + Math.random() * (2 - 0 + 0));
-        const enemyType = getTypeOfEnemies();
-        setList((prev) => [
-          ...prev,
-          { delay, index, duration, type: enemyType },
-        ]);
-        setIndex((prev) => prev + 1);
-      }
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [duration, index, list, play]);
+  useAddEnemies({
+    index,
+    setEnemies,
+    setIndex,
+  });
 
-  useEffect(() => {
-    if (duration === 0) {
-      setList([]);
-      setIndex(0);
-    }
-  }, [duration]);
+  usePlayerLose({
+    setEnemies,
+    setIndex,
+  });
 
-  useLayoutEffect(() => {
-    function updateSize() {
-      setList([]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
+  useChangeSizeHandler({
+    setEnemies,
+    setIndex,
+  });
 
   return (
     <>
-      {list?.map((item) => (
+      {enemies?.map((item) => (
         <Enemy
           key={item?.index}
           animationDuration={item?.duration}

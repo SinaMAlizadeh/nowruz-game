@@ -1,6 +1,6 @@
 import { Live } from "../../models/live";
-import { WINNER_POINTER } from "../../utilities/const";
-import { GameState, useLives } from "../gameContext";
+import { WINNER_POINTER, lives } from "../../utilities/const";
+import { GameState } from "../gameContext";
 import playerHasLive from "./helper";
 
 type ActionMap<M extends { [index: string]: unknown }> = {
@@ -90,7 +90,7 @@ export const gameReducer = (
         ...state,
         duration: 5,
         hight: 0,
-        lives: useLives,
+        lives: lives,
         width: 0,
         play: true,
         point: 0,
