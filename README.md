@@ -1,31 +1,17 @@
-# React + TypeScript + Vite
+# Nowruz Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![amou-v1-3](https://github.com/SinaMAlizadeh/nowruz-game/assets/32089050/e85a9c67-3900-4cab-9a11-c2a7650fb5dd)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Nowruz typically falls on or around the spring equinox, around March 20th or 21st, and is celebrated by Iranians and various other communities around the world, including Afghanistan, Azerbaijan, Central Asia, and parts of the Caucasus.
 
-## Expanding the ESLint configuration
+Preparations for Nowruz often begin weeks in advance and involve thorough cleaning and decorating of homes, purchasing new clothes, and gathering ingredients for special dishes. One of the most iconic traditions of Nowruz is the setting of the Haft-Seen table, which is adorned with seven symbolic items, each starting with the Persian letter "س" (pronounced "seen"), representing various hopes and wishes for the new year.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+During Nowruz, families come together to enjoy festive meals, exchange gifts, and visit friends and relatives. There are also public celebrations with music, dancing, and traditional performances.
 
-- Configure the top-level `parserOptions` property like this:
+Nowruz is not just a cultural celebration but also holds significant historical and religious importance. It has its roots in Zoroastrianism, an ancient Persian religion, and it symbolizes the victory of light over darkness and the triumph of good over evil.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Overall, Nowruz is a joyous and vibrant celebration that brings communities together to welcome the arrival of spring, celebrate new beginnings, and foster a sense of unity and hope for the year ahead.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-"# nowruz-game" 
+ 
+
