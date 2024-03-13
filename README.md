@@ -13,5 +13,4 @@ Nowruz is not just a cultural celebration but also holds significant historical 
 
 Overall, Nowruz is a joyous and vibrant celebration that brings communities together to welcome the arrival of spring, celebrate new beginnings, and foster a sense of unity and hope for the year ahead.
 
- 
-
+ #React #Typescript #Styled-component #Css
